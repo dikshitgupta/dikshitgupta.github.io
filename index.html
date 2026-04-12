@@ -5,149 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dikshit Gupta</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-  :root {
-    --ink: #1a1a1a;
-    --paper: #faf9f7;
-    --muted: #8a8580;
-    --accent: #c45d3e;
-    --border: #e8e5e1;
-    --card-bg: #ffffff;
-    --tag-bg: #f0eeeb;
-    --serif: 'Instrument Serif', Georgia, serif;
-    --sans: 'DM Sans', -apple-system, sans-serif;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html {
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
-  }
-
-  body {
-    font-family: var(--sans);
-    background: var(--paper);
-    color: var(--ink);
-    font-weight: 300;
-    line-height: 1.7;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  ::selection {
-    background: var(--accent);
-    color: white;
-  }
-
-  /* ---- NAV ---- */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    background: rgba(250, 249, 247, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  nav .nav-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 64px;
-  }
-
-  nav .logo {
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    color: var(--ink);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-
-  nav .logo span { color: var(--accent); }
-
-  nav .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  nav .nav-links a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 0.85rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: color 0.3s;
-    position: relative;
-  }
-
-  nav .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 1.5px;
-    background: var(--accent);
-    transition: width 0.3s ease;
-  }
-
-  nav .nav-links a:hover { color: var(--ink); }
-  nav .nav-links a:hover::after { width: 100%; }
-
-  /* ---- HAMBURGER ---- */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 4px;
-  }
-  .hamburger span {
-    display: block;
-    width: 22px;
-    height: 1.5px;
-    background: var(--ink);
-    transition: all 0.3s;
-  }
-
-  /* ---- SECTIONS ---- */
-  section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .section-label {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
   /* ---- HERO ---- */
   .hero {
     min-height: 100vh;
@@ -155,6 +14,7 @@
     flex-direction: column;
     justify-content: center;
     padding-top: 64px;
+    position: relative;
   }
 
   .hero-content {
@@ -253,11 +113,6 @@
     transform: rotate(45deg);
   }
 
-  @keyframes gentle-bob {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(6px); }
-  }
-
   /* ---- ABOUT ---- */
   .about {
     padding-top: 8rem;
@@ -333,374 +188,9 @@
     margin-top: 0.3rem;
   }
 
-  /* ---- PROJECTS ---- */
-  .projects {
-    padding-top: 4rem;
-    padding-bottom: 8rem;
-  }
-
-  .projects-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 3rem;
-  }
-
-  .projects-header h2 {
-    font-family: var(--serif);
-    font-size: 2.4rem;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-  }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .project-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2rem;
-    transition: all 0.4s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-
-  .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.06);
-  }
-
-  .project-card:hover::before {
-    transform: scaleX(1);
-  }
-
-  .project-number {
-    font-family: var(--serif);
-    font-size: 0.85rem;
-    color: var(--border);
-    margin-bottom: 1.5rem;
-    font-style: italic;
-  }
-
-  .project-card h3 {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.01em;
-  }
-
-  .project-card p {
-    color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .project-tags span {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.8rem;
-    background: var(--tag-bg);
-    border-radius: 100px;
-    color: var(--muted);
-  }
-
-  .project-arrow {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-  }
-
-  .project-card:hover .project-arrow {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: white;
-  }
-
-  /* ---- BLOG ---- */
-  .blog {
-    padding-top: 4rem;
-    padding-bottom: 8rem;
-  }
-
-  .blog h2 {
-    font-family: var(--serif);
-    font-size: 2.4rem;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    margin-bottom: 3rem;
-  }
-
-  .blog-list {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .blog-item {
-    display: grid;
-    grid-template-columns: 120px 1fr auto;
-    gap: 2rem;
-    align-items: baseline;
-    padding: 1.8rem 0;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s;
-  }
-
-  .blog-item:first-child {
-    border-top: 1px solid var(--border);
-  }
-
-  .blog-item:hover {
-    padding-left: 1rem;
-  }
-
-  .blog-date {
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .blog-title {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    transition: color 0.3s;
-  }
-
-  .blog-item:hover .blog-title {
-    color: var(--accent);
-  }
-
-  .blog-category {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    padding: 0.25rem 0.7rem;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    white-space: nowrap;
-  }
-
-  /* ---- RESUME ---- */
-  .resume {
-    padding-top: 4rem;
-    padding-bottom: 8rem;
-  }
-
-  .resume h2 {
-    font-family: var(--serif);
-    font-size: 2.4rem;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    margin-bottom: 3rem;
-  }
-
-  .timeline {
-    position: relative;
-    padding-left: 3rem;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 7px;
-    top: 8px;
-    bottom: 8px;
-    width: 1px;
-    background: var(--border);
-  }
-
-  .timeline-item {
-    position: relative;
-    padding-bottom: 3rem;
-  }
-
-  .timeline-item:last-child { padding-bottom: 0; }
-
-  .timeline-dot {
-    position: absolute;
-    left: -3rem;
-    top: 6px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    border: 2px solid var(--accent);
-    background: var(--paper);
-    z-index: 1;
-  }
-
-  .timeline-item:first-child .timeline-dot {
-    background: var(--accent);
-  }
-
-  .timeline-date {
-    font-size: 0.75rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-
-  .timeline-role {
-    font-family: var(--serif);
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 0.25rem;
-    letter-spacing: -0.01em;
-  }
-
-  .timeline-company {
-    font-size: 0.9rem;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-  }
-
-  .timeline-desc {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 560px;
-  }
-
-  /* ---- FOOTER ---- */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 4rem 2rem;
-    margin-top: 2rem;
-  }
-
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .footer-left h3 {
-    font-family: var(--serif);
-    font-size: 1.6rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-  }
-
-  .footer-left p {
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
-
-  .footer-right {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .footer-right a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.82rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: color 0.3s;
-  }
-
-  .footer-right a:hover {
-    color: var(--accent);
-  }
-
-  .footer-bottom {
-    max-width: 1100px;
-    margin: 2.5rem auto 0;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-    font-size: 0.75rem;
-    color: var(--muted);
-  }
-
-  /* ---- ANIMATIONS ---- */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ---- RESPONSIVE ---- */
   @media (max-width: 768px) {
-    .hamburger { display: flex; }
-
-    nav .nav-links {
-      display: none;
-      position: absolute;
-      top: 64px;
-      left: 0;
-      right: 0;
-      background: rgba(250,249,247,0.97);
-      backdrop-filter: blur(16px);
-      flex-direction: column;
-      padding: 1.5rem 2rem;
-      gap: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    nav .nav-links.open { display: flex; }
-
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .about-photo { max-width: 280px; }
-    .projects-grid { grid-template-columns: 1fr; }
-
-    .blog-item {
-      grid-template-columns: 1fr;
-      gap: 0.3rem;
-    }
-    .blog-category { justify-self: start; margin-top: 0.5rem; }
-
-    .footer-inner { flex-direction: column; gap: 2rem; }
     .about-stats { gap: 2rem; flex-wrap: wrap; }
     .scroll-hint { display: none; }
   }
@@ -711,15 +201,14 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo">dikshit<span>.</span></a>
+    <a href="index.html" class="logo">dikshit<span>.</span></a>
     <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#resume">Resume</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="resume.html">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -731,7 +220,7 @@
     <h1>Hi, I'm<br>Dikshit <em>Gupta</em></h1>
     <p>I build things for the web, write about ideas that excite me.</p>
     <div class="hero-links">
-      <a href="#projects" class="primary">View Work</a>
+      <a href="blog.html" class="primary">Read the Blog</a>
       <a href="#contact">Get in Touch</a>
     </div>
   </div>
@@ -748,147 +237,14 @@
     <img src="DG_MUSSORIE.jpg" alt="Dikshit Gupta" class="about-photo fade-in" style="object-fit: cover;">
     <div class="about-text fade-in">
       <h2>Crafting digital<br>experiences with care</h2>
-      <p>Hey, I'm Dikshit Gupta — a Software Engineer who works in Bengaluru who want to write as well so this is an attempt for same, I'm like to understand how things work at low level. like reading OS internals or going deep on distributed systems and database internals.</p>
-      <p>Outside of work, I like to trek, I have done Taekwondo in past (I still love to Kick Boxing bags), Nowadays focussing on strength trainings ( as of 29-03-2026) hoping to get my bodyfat to around 15 percent. I like to read as well.</p>
+      <p>Hey, I'm Dikshit Gupta — a Software Engineer based in Bengaluru who wants to write as well, so this is an attempt for that. I like to understand how things work at a low level — reading OS internals, going deep on distributed systems and database internals.</p>
+      <p>Outside of work, I like to trek. I have done Taekwondo in the past (I still love to kick boxing bags). Nowadays focusing on strength training — hoping to get my body fat to around 15 percent. I like to read as well.</p>
       <div class="about-stats">
         <div class="stat-item">
           <div class="stat-number">5+</div>
           <div class="stat-label">Years Experience</div>
         </div>
-        <!-- <div class="stat-item">
-          <div class="stat-number">20+</div>
-          <div class="stat-label">Projects Built</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">15+</div>
-          <div class="stat-label">Articles Written</div>
-        </div> -->
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section class="projects" id="projects">
-  <div class="section-label fade-in">Work</div>
-  <div class="projects-header fade-in">
-    <h2>Selected Projects</h2>
-  </div>
-  <!-- TODO: Add real projects here
-  <div class="projects-grid">
-    <div class="project-card fade-in">
-      <div class="project-number">01</div>
-      <div class="project-arrow">↗</div>
-      <h3>Project Alpha</h3>
-      <p>A full-stack web application that helps teams collaborate more effectively with real-time updates and smart notifications.</p>
-      <div class="project-tags">
-        <span>React</span>
-        <span>Node.js</span>
-        <span>MongoDB</span>
-      </div>
-    </div>
-    <div class="project-card fade-in">
-      <div class="project-number">02</div>
-      <div class="project-arrow">↗</div>
-      <h3>Design System</h3>
-      <p>A comprehensive component library and design system built for consistency and scalability across multiple products.</p>
-      <div class="project-tags">
-        <span>TypeScript</span>
-        <span>Storybook</span>
-        <span>Figma</span>
-      </div>
-    </div>
-    <div class="project-card fade-in">
-      <div class="project-number">03</div>
-      <div class="project-arrow">↗</div>
-      <h3>Analytics Dashboard</h3>
-      <p>An intuitive data visualization platform turning complex datasets into actionable insights for business teams.</p>
-      <div class="project-tags">
-        <span>Python</span>
-        <span>D3.js</span>
-        <span>PostgreSQL</span>
-      </div>
-    </div>
-    <div class="project-card fade-in">
-      <div class="project-number">04</div>
-      <div class="project-arrow">↗</div>
-      <h3>Open Source CLI</h3>
-      <p>A developer tool that streamlines common workflows with an elegant command-line interface and extensible plugin system.</p>
-      <div class="project-tags">
-        <span>Go</span>
-        <span>CLI</span>
-        <span>Open Source</span>
-      </div>
-    </div>
-  </div>
-  -->
-</section>
-
-<!-- BLOG -->
-<section class="blog" id="blog">
-  <div class="section-label fade-in">Writing</div>
-  <h2 class="fade-in">Recent Articles</h2>
-  <div class="blog-list">
-    <a href="#" class="blog-item fade-in">
-      <span class="blog-date">Mar 2026</span>
-      <span class="blog-title">On Building Things That Last</span>
-      <span class="blog-category">Craft</span>
-    </a>
-    <a href="#" class="blog-item fade-in">
-      <span class="blog-date">Feb 2026</span>
-      <span class="blog-title">Why I Switched to a Minimal Tech Stack</span>
-      <span class="blog-category">Engineering</span>
-    </a>
-    <a href="#" class="blog-item fade-in">
-      <span class="blog-date">Jan 2026</span>
-      <span class="blog-title">The Art of Writing Clean Documentation</span>
-      <span class="blog-category">Writing</span>
-    </a>
-    <a href="#" class="blog-item fade-in">
-      <span class="blog-date">Dec 2025</span>
-      <span class="blog-title">Lessons from a Year of Learning in Public</span>
-      <span class="blog-category">Personal</span>
-    </a>
-    <a href="#" class="blog-item fade-in">
-      <span class="blog-date">Nov 2025</span>
-      <span class="blog-title">Designing for Simplicity in Complex Systems</span>
-      <span class="blog-category">Design</span>
-    </a>
-  </div>
-</section>
-
-<!-- RESUME -->
-<section class="resume" id="resume">
-  <div class="section-label fade-in">Experience</div>
-  <h2 class="fade-in">Where I've Worked</h2>
-  <div class="timeline fade-in">
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">Feb 2026 — Present</div>
-      <div class="timeline-role">Site Reliability Engineer II</div>
-      <div class="timeline-company">Booking Holdings · Bengaluru</div>
-      <div class="timeline-desc">Building and improving resilience of databases at scale — focusing on disaster recovery automation, failover readiness, and high availability of critical data assets including PostgreSQL, MySQL, Cassandra, and CockroachDB across globally distributed infrastructure.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">Nov 2021 — Jan 2026</div>
-      <div class="timeline-role">Software Development Engineer III</div>
-      <div class="timeline-company">Vahan · Bengaluru</div>
-      <div class="timeline-desc">Led data warehousing initiative with ClickHouse Cloud, improving analytical query performance by 90%. Scaled a telecalling platform to 2M monthly contacts, reduced Campaign API p95 latency by 70% via differential caching, and cut deployment times from 5 minutes to under 20 seconds with a Jenkins + Docker CI/CD pipeline.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">Jul 2019 — Nov 2021</div>
-      <div class="timeline-role">Software Engineer</div>
-      <div class="timeline-company">Publicis Sapient · Bengaluru</div>
-      <div class="timeline-desc">Built data quality validation systems with 100+ rules, automated data pipelines from CloudSQL to BigQuery, authored Terraform infra-as-code for monitoring dashboards, and engineered a Spring Boot microservice on Spanner that cut support ticket resolution time by 40%.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">May 2018 — Jul 2018</div>
-      <div class="timeline-role">Data Science Intern</div>
-      <div class="timeline-company">Cars24 · Gurgaon</div>
-      <div class="timeline-desc">Revamped the car conversion model, improving AUC-ROC score from 68 to 73.</div>
     </div>
   </div>
 </section>
@@ -913,7 +269,6 @@
 </footer>
 
 <script>
-  // Intersection Observer for fade-in animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
@@ -927,7 +282,6 @@
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Close mobile menu on link click
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       document.querySelector('.nav-links').classList.remove('open');

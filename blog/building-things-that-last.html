@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On Building Things That Last — Dikshit Gupta</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .post-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .post-header {
+    padding-top: calc(64px + 4rem);
+    padding-bottom: 3rem;
+  }
+
+  .post-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    transition: color 0.3s;
+  }
+  .post-back:hover { color: var(--accent); }
+  .post-back::before { content: '←'; font-size: 1rem; letter-spacing: 0; }
+
+  .post-category {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .post-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .post-meta .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .post-body { padding: 3rem 0 6rem; }
+
+  .post-body p {
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.85;
+    margin-bottom: 1.75rem;
+    font-weight: 300;
+  }
+
+  .post-body h2 {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .post-body ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .post-body li {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    font-weight: 300;
+  }
+
+  .post-body blockquote {
+    border-left: 2px solid var(--accent);
+    margin: 2rem 0;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+  }
+
+  .post-body blockquote p {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 0;
+  }
+
+  .post-footer {
+    padding: 2.5rem 0 6rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .post-footer .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.3s;
+  }
+  .post-footer .back-link:hover { color: var(--accent); }
+  .post-footer .back-link::before { content: '←'; font-size: 1rem; letter-spacing: 0; }
+
+  .post-footer .post-share { font-size: 0.8rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">dikshit<span>.</span></a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog.html" class="active">Blog</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="post-wrapper">
+  <div class="post-header fade-in">
+    <a href="../blog.html" class="post-back">All Articles</a>
+    <div class="post-category">Craft</div>
+    <h1>On Building Things That Last</h1>
+    <div class="post-meta">
+      <span>March 2026</span>
+      <div class="dot"></div>
+      <span>5 min read</span>
+    </div>
+  </div>
+
+  <div class="post-body fade-in">
+    <p>There's a particular satisfaction in building something you know will still be working years from now. Not because you wrote it perfectly, but because you understood the problem well enough to make it simple.</p>
+
+    <p>I've been thinking about this a lot lately — what makes software durable? Why do some codebases age gracefully while others become unmaintainable within months of their first deployment?</p>
+
+    <h2>Simplicity is the goal, not the starting point</h2>
+
+    <p>Most systems start simple. The real challenge is keeping them simple as requirements grow. Every added feature is a chance to introduce complexity that compounds over time. The engineers who build lasting things aren't the ones who resist change — they're the ones who find the simplest shape for each new requirement.</p>
+
+    <blockquote>
+      <p>"The most dangerous kind of complexity is the kind you don't notice until it's everywhere."</p>
+    </blockquote>
+
+    <p>I've seen this pattern repeatedly: a small hack gets added under deadline pressure. Then another. Each one is locally reasonable. Globally, they accumulate into a system nobody fully understands anymore.</p>
+
+    <h2>Understanding over cleverness</h2>
+
+    <p>The engineers I most admire write code that reads like prose — not because they're trying to be literary, but because they've thought hard enough about the problem that the solution is obvious in retrospect. Clever code is a signal that the problem isn't fully understood yet.</p>
+
+    <p>When I look at systems that have lasted, they share a few traits:</p>
+
+    <ul>
+      <li>Clear separation between what changes frequently and what doesn't</li>
+      <li>Explicit over implicit — nothing hidden in side effects or magic</li>
+      <li>Boring technology choices where boring means proven and well-understood</li>
+      <li>Names that tell you what something <em>is</em>, not how it's implemented</li>
+    </ul>
+
+    <h2>The maintenance mindset</h2>
+
+    <p>Most code is written once and read many times. The discipline of writing for your future self — or for a colleague at 2am during an incident — is what separates good engineering from merely working engineering.</p>
+
+    <p>This isn't about comments (though those help). It's about the structure itself making the system's invariants obvious. A well-named function, a well-chosen data structure, an error message that actually tells you what went wrong and why — these are the things that make a codebase livable years later.</p>
+
+    <p>Building things that last is less about technical brilliance and more about sustained, careful thinking. It's a practice, not a talent.</p>
+  </div>
+
+  <div class="post-footer fade-in">
+    <a href="../blog.html" class="back-link">Back to all articles</a>
+    <span class="post-share">dikshit20@gmail.com</span>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <h3>Let's connect</h3>
+      <p>dikshit20@gmail.com</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/dikshitgupta">GitHub</a>
+      <a href="https://www.linkedin.com/in/dikshitgupta">LinkedIn</a>
+      <a href="https://x.com/dikshitddn">Twitter</a>
+      <a href="https://drive.google.com/file/d/1sWE1ALvWl3T186RbWtA4Byhnuk5HmwbN/view?usp=drive_link">Resume ↓</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Dikshit Gupta.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), index * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Dikshit Gupta</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .page-header {
+    padding-top: calc(64px + 5rem);
+    padding-bottom: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .page-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+
+  .page-header p {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 480px;
+  }
+
+  /* ---- BLOG LIST ---- */
+  .blog-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem 8rem;
+  }
+
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog-item {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 2rem;
+    align-items: baseline;
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+  }
+
+  .blog-item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .blog-item:hover {
+    padding-left: 1rem;
+  }
+
+  .blog-date {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .blog-title {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    transition: color 0.3s;
+  }
+
+  .blog-item:hover .blog-title {
+    color: var(--accent);
+  }
+
+  .blog-category {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .blog-item {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+    }
+    .blog-category { justify-self: start; margin-top: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">dikshit<span>.</span></a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header fade-in">
+  <div class="section-label">Writing</div>
+  <h1>Articles &<br><em>Thoughts</em></h1>
+  <p>Exploring software, systems, and ideas that stick.</p>
+</div>
+
+<!-- BLOG LIST -->
+<div class="blog-section">
+  <div class="blog-list">
+    <a href="blog/building-things-that-last.html" class="blog-item fade-in">
+      <span class="blog-date">Mar 2026</span>
+      <span class="blog-title">On Building Things That Last</span>
+      <span class="blog-category">Craft</span>
+    </a>
+    <a href="blog/minimal-tech-stack.html" class="blog-item fade-in">
+      <span class="blog-date">Feb 2026</span>
+      <span class="blog-title">Why I Switched to a Minimal Tech Stack</span>
+      <span class="blog-category">Engineering</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <h3>Let's connect</h3>
+      <p>dikshit20@gmail.com</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/dikshitgupta">GitHub</a>
+      <a href="https://www.linkedin.com/in/dikshitgupta">LinkedIn</a>
+      <a href="https://x.com/dikshitddn">Twitter</a>
+      <a href="https://drive.google.com/file/d/1sWE1ALvWl3T186RbWtA4Byhnuk5HmwbN/view?usp=drive_link">Resume ↓</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Dikshit Gupta.
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, index * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>

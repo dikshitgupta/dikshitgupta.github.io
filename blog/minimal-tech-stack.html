@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why I Switched to a Minimal Tech Stack — Dikshit Gupta</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .post-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .post-header {
+    padding-top: calc(64px + 4rem);
+    padding-bottom: 3rem;
+  }
+
+  .post-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    transition: color 0.3s;
+  }
+  .post-back:hover { color: var(--accent); }
+  .post-back::before { content: '←'; font-size: 1rem; letter-spacing: 0; }
+
+  .post-category {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .post-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .post-meta .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .post-body { padding: 3rem 0 6rem; }
+
+  .post-body p {
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.85;
+    margin-bottom: 1.75rem;
+    font-weight: 300;
+  }
+
+  .post-body h2 {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .post-body ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .post-body li {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    font-weight: 300;
+  }
+
+  .post-body blockquote {
+    border-left: 2px solid var(--accent);
+    margin: 2rem 0;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+  }
+
+  .post-body blockquote p {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 0;
+  }
+
+  .post-body code {
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 0.88em;
+    background: var(--tag-bg);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    color: var(--ink);
+  }
+
+  .post-footer {
+    padding: 2.5rem 0 6rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .post-footer .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.3s;
+  }
+  .post-footer .back-link:hover { color: var(--accent); }
+  .post-footer .back-link::before { content: '←'; font-size: 1rem; letter-spacing: 0; }
+
+  .post-footer .post-share { font-size: 0.8rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">dikshit<span>.</span></a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog.html" class="active">Blog</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="post-wrapper">
+  <div class="post-header fade-in">
+    <a href="../blog.html" class="post-back">All Articles</a>
+    <div class="post-category">Engineering</div>
+    <h1>Why I Switched to a Minimal Tech Stack</h1>
+    <div class="post-meta">
+      <span>February 2026</span>
+      <div class="dot"></div>
+      <span>6 min read</span>
+    </div>
+  </div>
+
+  <div class="post-body fade-in">
+    <p>A year ago I was running a side project on a stack I'd describe as "modern": a React frontend with a Node/Express API, a PostgreSQL database, Redis for caching, Docker Compose for local dev, and a CI/CD pipeline wired to a cloud provider. It worked. It also took me an entire evening to get a new contributor onboarded.</p>
+
+    <p>That evening made me ask a question I hadn't thought to ask before: is all of this complexity earning its keep?</p>
+
+    <h2>The hidden cost of capability</h2>
+
+    <p>Every tool in a stack has a learning curve, a failure mode, and a maintenance surface. A framework that saves you two days building auth adds a dependency you'll patch for years. This isn't an argument against frameworks — it's an argument for being honest about the tradeoff.</p>
+
+    <p>The projects where I felt most productive weren't the ones with the best tooling. They were the ones where I understood every layer of what was happening. When something broke, I knew where to look. When I wanted to add something, I knew where it fit.</p>
+
+    <blockquote>
+      <p>"The best tool is the one you understand well enough to bend."</p>
+    </blockquote>
+
+    <h2>What I actually removed</h2>
+
+    <p>Over six months I stripped the project back significantly:</p>
+
+    <ul>
+      <li>Dropped Redis — the cache hit rate didn't justify the operational overhead</li>
+      <li>Replaced the React SPA with server-rendered HTML for pages that didn't need interactivity</li>
+      <li>Collapsed the API layer into the same process as the renderer</li>
+      <li>Switched from Docker Compose to a single <code>make dev</code> command that just works</li>
+    </ul>
+
+    <p>The result was a codebase half the size, with no measurable regression in user-facing performance. Deploys went from 4 minutes to 45 seconds. New contributors were productive in under an hour.</p>
+
+    <h2>Minimalism isn't about being clever</h2>
+
+    <p>The instinct, when you remove things, is to feel like you're leaving capability on the table. But I've come to think of it differently: a minimal stack isn't less capable, it's more legible. You can reason about it. You can hold it in your head.</p>
+
+    <p>This doesn't mean avoiding complexity everywhere — some problems genuinely need distributed systems, caches, and queues. But most side projects, internal tools, and early-stage products don't. They need something that works, that you can fix at midnight, and that a new person can understand in an afternoon.</p>
+
+    <p>That's the stack I'm building on now. It's quieter. I like it better.</p>
+  </div>
+
+  <div class="post-footer fade-in">
+    <a href="../blog.html" class="back-link">Back to all articles</a>
+    <span class="post-share">dikshit20@gmail.com</span>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <h3>Let's connect</h3>
+      <p>dikshit20@gmail.com</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/dikshitgupta">GitHub</a>
+      <a href="https://www.linkedin.com/in/dikshitgupta">LinkedIn</a>
+      <a href="https://x.com/dikshitddn">Twitter</a>
+      <a href="https://drive.google.com/file/d/1sWE1ALvWl3T186RbWtA4Byhnuk5HmwbN/view?usp=drive_link">Resume ↓</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Dikshit Gupta.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), index * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+  });
+</script>
+</body>
+</html>
